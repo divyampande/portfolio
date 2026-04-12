@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Divyam Pandey — Aerospace Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #ffffff; --l1: #f4f4f4; --l2: #e0e0e0;
+  --t1: #161616; --t2: #525252; --tp: #6f6f6f;
+  --border: #c6c6c6; --blue: #0f62fe; --blue-h: #0353e9;
+  --blue-a: #002d9c; --blue-l: #0043ce; --blue-10: #edf5ff;
+  --nav: #161616; --nav-t: #c6c6c6;
+  --sans: 'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  --mono: 'IBM Plex Mono',Menlo,Courier,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);font-size:16px;line-height:1.5}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav);height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
+.nav-logo{font-size:14px;font-weight:600;color:#fff;letter-spacing:.16px;text-decoration:none}
+.nav-links{display:flex;list-style:none}
+.nav-links a{display:block;padding:0 14px;height:48px;line-height:48px;font-size:14px;font-weight:400;color:var(--nav-t);text-decoration:none;letter-spacing:.16px;transition:color .1s}
+.nav-links a:hover{color:#fff}
+
+/* LAYOUT */
+section{padding:64px 0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+
+/* HERO */
+#hero{background:var(--bg);padding:120px 0 80px;border-bottom:1px solid var(--border)}
+.hero-mono{font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:.32px;text-transform:uppercase;margin-bottom:16px}
+.hero-name{font-size:60px;font-weight:300;line-height:1.17;color:var(--t1);margin-bottom:8px}
+.hero-role{font-size:32px;font-weight:300;line-height:1.25;color:var(--t2);margin-bottom:24px}
+.hero-desc{font-size:16px;line-height:1.5;color:var(--t2);max-width:640px;margin-bottom:40px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;font-family:var(--sans);font-size:14px;letter-spacing:.16px;padding:0 48px 0 16px;border:1px solid transparent;border-radius:0;cursor:pointer;text-decoration:none;height:48px;transition:background .1s}
+.btn-p:hover{background:var(--blue-h)}
+.btn-t{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--blue);font-family:var(--sans);font-size:14px;letter-spacing:.16px;padding:0 16px;border:1px solid var(--blue);border-radius:0;cursor:pointer;text-decoration:none;height:48px;transition:background .1s}
+.btn-t:hover{background:var(--blue-10)}
+.hero-contacts{display:flex;gap:24px;flex-wrap:wrap}
+.hc{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--t2);text-decoration:none;letter-spacing:.16px}
+.hc:hover{color:var(--blue)}
+
+/* SECTION HEADER */
+.s-label{font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:.32px;text-transform:uppercase;margin-bottom:8px}
+.s-title{font-size:32px;font-weight:300;line-height:1.25;color:var(--t1);margin-bottom:40px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+
+/* CARDS */
+.card{background:var(--l1);padding:24px;border-radius:0;transition:background .1s}
+.card:hover{background:#e8e8e8}
+.card-head{font-size:20px;font-weight:600;line-height:1.4;color:var(--t1);margin-bottom:4px}
+.card-sub{font-size:14px;color:var(--blue);letter-spacing:.16px;margin-bottom:4px}
+.card-meta{font-family:var(--mono);font-size:12px;color:var(--tp);letter-spacing:.32px;margin-bottom:14px}
+.card-body{font-size:14px;line-height:1.5;color:var(--t2);letter-spacing:.16px}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px}
+
+/* EDUCATION */
+#education{background:var(--l1)}
+
+/* EXPERIENCE */
+#experience{background:var(--bg)}
+.exp-card{background:var(--l1);padding:32px;border-left:3px solid var(--blue)}
+.exp-card ul{margin-top:14px;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.exp-card ul li{font-size:14px;line-height:1.5;color:var(--t2);letter-spacing:.16px}
+
+/* PROJECTS */
+#projects{background:var(--l1)}
+.proj-card{background:var(--bg);display:flex;flex-direction:column;transition:background .1s}
+.proj-card:hover{background:#f4f4f4}
+
+/* ─── IMAGE SLOT ──────────────────────────────────────────
+   To add an image: replace the <div class="proj-ph"> block
+   with: <img src="your-image.jpg" class="proj-img" alt="…">
+   To add a video: <video src="your-video.mp4" class="proj-img" autoplay muted loop></video>
+   ─────────────────────────────────────────────────────── */
+.proj-media{width:100%;height:200px;background:#e0e0e0;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);overflow:hidden}
+.proj-img{width:100%;height:100%;object-fit:cover}
+.proj-ph{font-family:var(--mono);font-size:10px;color:var(--tp);letter-spacing:.32px;text-align:center;line-height:1.8;padding:8px}
+
+.proj-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.proj-title{font-size:16px;font-weight:600;color:var(--t1);margin-bottom:4px;line-height:1.4}
+.proj-period{font-family:var(--mono);font-size:11px;color:var(--tp);letter-spacing:.32px;margin-bottom:12px}
+.proj-desc{font-size:14px;color:var(--t2);line-height:1.5;letter-spacing:.16px;flex:1;margin-bottom:14px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tag{background:var(--blue-10);color:var(--blue);font-size:11px;padding:3px 9px;border-radius:24px;letter-spacing:.16px}
+.proj-link{font-size:12px;color:var(--blue);text-decoration:none;letter-spacing:.16px}
+.proj-link:hover{color:var(--blue-l);text-decoration:underline}
+
+/* PUBLICATION */
+.pub{background:var(--blue-10);border-left:3px solid var(--blue);padding:20px 24px;margin-top:1px}
+.pub-lbl{font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.32px;text-transform:uppercase;margin-bottom:6px}
+.pub-title{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:4px}
+.pub-ref{font-size:13px;color:var(--t2)}
+.pub-ref a{color:var(--blue)}
+
+/* SKILLS */
+#skills{background:var(--bg)}
+.sk-group{margin-bottom:28px}
+.sk-label{font-size:14px;font-weight:600;color:var(--t1);letter-spacing:.16px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sk-tags{display:flex;flex-wrap:wrap;gap:8px}
+.sk-tag{background:var(--l1);color:var(--t1);font-size:13px;padding:6px 14px;border:1px solid var(--border);border-radius:0;letter-spacing:.16px}
+
+/* ACHIEVEMENTS */
+#achievements{background:var(--l1)}
+.ach-item{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid var(--border)}
+.ach-item:first-of-type{border-top:1px solid var(--border)}
+.ach-icon{width:40px;height:40px;min-width:40px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px}
+.ach-title{font-size:16px;font-weight:600;color:var(--t1);margin-bottom:4px}
+.ach-desc{font-size:14px;color:var(--t2);letter-spacing:.16px}
+.ach-yr{font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:.32px;margin-left:auto;padding-top:2px;min-width:36px;text-align:right}
+
+/* CERTS */
+#certifications{background:var(--bg)}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px}
+.cert-card{background:var(--l1);padding:24px}
+.cert-name{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:4px}
+.cert-issuer{font-family:var(--mono);font-size:11px;color:var(--tp);letter-spacing:.32px}
+.cert-perfect{font-family:var(--mono);font-size:11px;color:#24a148;letter-spacing:.32px;margin-bottom:4px}
+
+/* LEADERSHIP */
+#leadership{background:var(--l1)}
+
+/* FOOTER */
+footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
+.footer-name{font-size:32px;font-weight:300;color:#fff;margin-bottom:8px}
+.footer-tag{font-size:14px;color:var(--nav-t);letter-spacing:.16px;margin-bottom:32px}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:32px}
+.footer-links a{color:var(--nav-t);text-decoration:none;font-size:14px;letter-spacing:.16px;transition:color .1s}
+.footer-links a:hover{color:#fff}
+.footer-hr{border:none;border-top:1px solid #393939;margin:24px 0}
+.footer-copy{font-size:12px;color:#6f6f6f;letter-spacing:.32px}
+
+/* RESPONSIVE */
+@media(max-width:1056px){.g3{grid-template-columns:1fr 1fr}.cert-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:672px){
+  .hero-name{font-size:42px}.hero-role{font-size:24px}
+  .g2,.g3,.cert-grid{grid-template-columns:1fr}
+  nav{padding:0 16px}.nav-links{display:none}
+  .wrap{padding:0 16px}
+  section{padding:48px 0}
+  #hero{padding:96px 0 48px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <a href="#hero" class="nav-logo">Divyam Pandey</a>
+  <ul class="nav-links">
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="wrap">
+    <p class="hero-mono">M.Tech Aerospace Engineering · IIT Madras</p>
+    <h1 class="hero-name">Divyam Pandey</h1>
+    <h2 class="hero-role">Aerospace Engineer & Computational Researcher</h2>
+    <p class="hero-desc">
+      Specializing in computational fluid dynamics, finite element methods, and physics-informed machine learning applied to aerospace and structural problems. Institute Silver Medalist · DAAD WISE Fellow, TU Berlin · Published Researcher.
+    </p>
+    <div class="hero-btns">
+      <a href="mailto:divyampandey@protonmail.com" class="btn-p">Get in touch →</a>
+      <a href="https://linkedin.com/in/-divyampandey" target="_blank" class="btn-t">LinkedIn ↗</a>
+      <a href="https://github.com/divyampande" target="_blank" class="btn-t">GitHub ↗</a>
+    </div>
+    <div class="hero-contacts">
+      <a href="tel:+917225858011" class="hc">📞 +91-7225858011</a>
+      <a href="mailto:divyampandey@protonmail.com" class="hc">✉ divyampandey@protonmail.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EDUCATION ═══════════ -->
+<section id="education">
+  <div class="wrap">
+    <p class="s-label">Academic Background</p>
+    <h2 class="s-title">Education</h2>
+    <div class="g2">
+      <div class="card">
+        <p class="card-sub">Indian Institute of Technology Madras</p>
+        <h3 class="card-head">M.Tech — Aerospace Engineering</h3>
+        <p class="card-meta">Jul 2025 – Present · Chennai, Tamil Nadu · CGPA: 9.76 / 10</p>
+        <p class="card-body">Focused on aerodynamics, compressible flows, unsteady aerodynamics, and advanced computational methods. Currently serving as Teaching Assistant for Thermodynamics.</p>
+      </div>
+      <div class="card">
+        <p class="card-sub">Indian Institute of Technology Indore</p>
+        <h3 class="card-head">B.Tech — Mechanical Engineering</h3>
+        <p class="card-meta">Nov 2021 – May 2025 · Indore, Madhya Pradesh · CPI: 9.34 / 10</p>
+        <p class="card-body">Graduated as <strong>Institute Silver Medalist</strong> for best academic performance. Thesis on CFD-based microfluidic drug delivery simulation resulted in a peer-reviewed publication.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section id="experience">
+  <div class="wrap">
+    <p class="s-label">Industry & Research</p>
+    <h2 class="s-title">Experience</h2>
+    <div class="exp-card">
+      <!-- ┌─ ADD PHOTO ──────────────────────────────────────────────────────────┐
+           │ A photo of TU Berlin campus or your workspace at the institute       │
+           │ Paste this inside the exp-card, above the <p class="card-sub"> tag  │
+           │ <img src="tu-berlin.jpg" style="width:100%;height:240px;            │
+           │   object-fit:cover;margin-bottom:24px;" alt="TU Berlin">            │
+           └──────────────────────────────────────────────────────────────────── -->
+      <p class="card-sub">Institute of Mechanics · Technische Universität Berlin, Germany</p>
+      <h3 class="card-head">Research Intern — Non-Linear Structural Analysis via PINNs & KANs</h3>
+      <p class="card-meta">May 2024 – Aug 2024 · DAAD WISE Fellowship · Python</p>
+      <p class="card-body">Developed physics-informed and Kolmogorov-Arnold Network (KAN) based approaches for mesh-free non-linear structural analysis, achieving a 90% reduction in convergence iterations over baseline architectures.</p>
+      <ul>
+        <li>Implemented a mesh-free PINN approach for structural analysis, eliminating mesh generation overhead of FEM.</li>
+        <li>Integrated KAN spline layers to model strong non-linearities in hyperelastic material behaviour with high fidelity.</li>
+        <li>Reduced solution-convergence iterations by 90% over baseline linear-layer architecture through KAN integration.</li>
+        <li>Validated model accuracy within 0.5% L2 error against FEM benchmarks across ANSYS, Abaqus, and FEniCS.</li>
+      </ul>
+      <div style="margin-top:18px">
+        <a href="https://drive.google.com/file/d/1YHVyDnNpiH8dqCBEFhq9MS0ldXCDykAO/view?usp=sharing" target="_blank" class="proj-link">📄 Full Report ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<section id="projects">
+  <div class="wrap">
+    <p class="s-label">Research & Engineering</p>
+    <h2 class="s-title">Projects</h2>
+    <div class="g3">
+
+      <!-- P1: UAV -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <!-- ┌─ ADD IMAGE ──────────────────────────────────────────────────────┐
+               │ SolidWorks CAD render or technical drawing of the UAV           │
+               │ Replace this entire <div class="proj-ph"> with:                 │
+               │ <img src="uav-render.jpg" class="proj-img" alt="UAV Render">   │
+               └──────────────────────────────────────────────────────────────── -->
+          <div class="proj-ph">[ SolidWorks CAD render<br>or UAV technical drawing ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Fixed-Wing UAV for Emergency Medical Supply Delivery</h3>
+          <p class="proj-period">Jan 2026 – Present · Group Lead · Design Course, IIT Madras</p>
+          <p class="proj-desc">Led a 6-member team through end-to-end conceptual design of a fixed-wing UAV for last-mile medical delivery. Applied Lifting-Line Theory and Vortex Panel analysis to select optimal airfoil and wing planform for best L/D.</p>
+          <div class="proj-tags">
+            <span class="tag">Aerodynamics</span><span class="tag">SolidWorks</span>
+            <span class="tag">LLT</span><span class="tag">UAV Design</span>
+          </div>
+          <a href="https://drive.google.com/file/d/1uPq8USqHyyq_Ktg-NIZP4lfMYDMmJH0I/view?usp=drive_link" target="_blank" class="proj-link">📄 Report ↗</a>
+        </div>
+      </div>
+
+      <!-- P2: CFD Solvers -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <!-- ┌─ ADD IMAGE ──────────────────────────────────────────────────────┐
+               │ Temperature/velocity contour plot or convergence graph           │
+               │ <img src="cfd-contour.png" class="proj-img" alt="CFD Output">  │
+               └──────────────────────────────────────────────────────────────── -->
+          <div class="proj-ph">[ CFD contour plot<br>or convergence history graph ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">High-Performance 1D & 2D CFD Solvers</h3>
+          <p class="proj-period">Feb 2026 – Mar 2026 · Course Project · IIT Madras</p>
+          <p class="proj-desc">Fortran 90/Python suite for steady-state conduction and convection-diffusion problems. TDMA line-implicit solvers with automated SOR optimization cut iterations by 90%. Ghost-node Neumann BC treatment reduced grid sizes by 75%.</p>
+          <div class="proj-tags">
+            <span class="tag">Fortran 90</span><span class="tag">Python</span>
+            <span class="tag">CFD</span><span class="tag">TDMA</span>
+          </div>
+          <a href="https://github.com/divyampande/CFD_Assignments.git" target="_blank" class="proj-link">💻 GitHub ↗</a>
+        </div>
+      </div>
+
+      <!-- P3: FEM -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <!-- ┌─ ADD IMAGE ──────────────────────────────────────────────────────┐
+               │ Stress contour from Python vs ANSYS comparison                  │
+               │ <img src="fem-plot.png" class="proj-img" alt="FEM Stress Plot"> │
+               └──────────────────────────────────────────────────────────────── -->
+          <div class="proj-ph">[ FEM stress contour<br>or Python vs ANSYS comparison ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">FEM Solver for Composite Plate Analysis</h3>
+          <p class="proj-period">Feb 2025 – Apr 2025 · IIT Indore</p>
+          <p class="proj-desc">2D FEM solver from scratch in Python for composite laminates with spatially varying material properties and multiple load types. Validated against ANSYS Mechanical across all test cases with &lt;3% relative error in stress predictions.</p>
+          <div class="proj-tags">
+            <span class="tag">Python</span><span class="tag">FEM</span>
+            <span class="tag">ANSYS</span><span class="tag">Composites</span>
+          </div>
+          <a href="https://drive.google.com/file/d/1YHVyDnNpiH8dqCBEFhq9MS0ldXCDykAO/view?usp=sharing" target="_blank" class="proj-link">📄 Report ↗</a>
+        </div>
+      </div>
+
+      <!-- P4: Microfluidic -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <!-- ┌─ ADD IMAGE/VIDEO ─────────────────────────────────────────────────┐
+               │ ANSYS Fluent simulation screenshot of the microfluidic channel    │
+               │ For video: <video src="fluent.mp4" class="proj-img"              │
+               │   autoplay muted loop></video>                                    │
+               └───────────────────────────────────────────────────────────────── -->
+          <div class="proj-ph">[ ANSYS Fluent simulation<br>of microfluidic channel ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">CFD Analysis of a Microfluidic Drug Delivery System</h3>
+          <p class="proj-period">Feb 2024 – Nov 2024 · Bachelor's Thesis</p>
+          <p class="proj-desc">Simulated transdermal drug delivery in ANSYS Fluent to validate artificial membranes as substitutes for animal testing. Identified membrane thickness as the dominant parameter for shear-force-mediated diffusion. <strong>Peer-reviewed publication.</strong></p>
+          <div class="proj-tags">
+            <span class="tag">ANSYS Fluent</span><span class="tag">SolidWorks</span>
+            <span class="tag">Published</span>
+          </div>
+          <a href="https://doi.org/10.3390/scipharm92020035" target="_blank" class="proj-link">📰 Published Paper ↗</a>
+        </div>
+      </div>
+
+      <!-- P5: Heat Transfer -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <!-- ┌─ ADD IMAGE ──────────────────────────────────────────────────────┐
+               │ Lid-driven cavity flow field or Nusselt number plot              │
+               │ <img src="cavity-flow.png" class="proj-img" alt="Flow Field">   │
+               └──────────────────────────────────────────────────────────────── -->
+          <div class="proj-ph">[ Lid-driven cavity flow field<br>or Nusselt number vs position ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">CFD & Heat Transfer Research</h3>
+          <p class="proj-period">Jan 2024 – Apr 2024 · IIT Indore</p>
+          <p class="proj-desc">Validated 2D/3D lid-driven cavity flow simulations and studied forced convection in porous square and circular cylinders. Mapped drag coefficients and Nusselt numbers across positions to assess near-wall confinement effects.</p>
+          <div class="proj-tags">
+            <span class="tag">ANSYS Fluent</span><span class="tag">Python</span>
+            <span class="tag">Convection</span><span class="tag">Research</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6: VAWT -->
+      <div class="proj-card">
+        <div class="proj-media">
+          <!-- ┌─ ADD IMAGE ──────────────────────────────────────────────────────┐
+               │ VAWT prototype photo or SolidWorks render                        │
+               │ <img src="vawt.jpg" class="proj-img" alt="VAWT Prototype">      │
+               └──────────────────────────────────────────────────────────────── -->
+          <div class="proj-ph">[ VAWT prototype photo<br>or SolidWorks/ANSYS render ]</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Adaptive Vertical Axis Wind Turbine (VAWT)</h3>
+          <p class="proj-period">Jan 2024 – Apr 2024 · AAKRUTI'24 · Dassault Systèmes</p>
+          <p class="proj-desc">Designed a Darrieus-Savonius hybrid rotor using drag torque to resolve the self-starting limitation of lift-based VAWTs. Designed a variable-pitch control mechanism to optimize blade angle-of-attack for maximum power extraction.</p>
+          <div class="proj-tags">
+            <span class="tag">SolidWorks</span><span class="tag">ANSYS</span>
+            <span class="tag">Manufacturing</span><span class="tag">Wind Energy</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /g3 -->
+
+    <!-- Publication Strip -->
+    <div class="pub">
+      <p class="pub-lbl">📰 Peer-Reviewed Publication</p>
+      <p class="pub-title">CFD-based validation of artificial membranes for transdermal drug delivery simulation</p>
+      <p class="pub-ref">Scientia Pharmaceutica, 2024 &nbsp;·&nbsp; <a href="https://doi.org/10.3390/scipharm92020035" target="_blank">DOI: 10.3390/scipharm92020035 ↗</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SKILLS ═══════════ -->
+<section id="skills">
+  <div class="wrap">
+    <p class="s-label">Technical Expertise</p>
+    <h2 class="s-title">Skills</h2>
+    <div class="g2" style="gap:40px">
+      <div>
+        <div class="sk-group">
+          <p class="sk-label">Simulation & Design</p>
+          <div class="sk-tags">
+            <span class="sk-tag">ANSYS Fluent (CFD)</span>
+            <span class="sk-tag">ANSYS Mechanical (FEA)</span>
+            <span class="sk-tag">Abaqus</span>
+            <span class="sk-tag">SolidWorks</span>
+            <span class="sk-tag">CATIA</span>
+            <span class="sk-tag">AutoCAD</span>
+          </div>
+        </div>
+        <div class="sk-group">
+          <p class="sk-label">Tools & Platforms</p>
+          <div class="sk-tags">
+            <span class="sk-tag">Git</span>
+            <span class="sk-tag">Linux</span>
+            <span class="sk-tag">Arduino</span>
+            <span class="sk-tag">3DEXPERIENCE</span>
+            <span class="sk-tag">LaTeX</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sk-group">
+          <p class="sk-label">Programming</p>
+          <div class="sk-tags">
+            <span class="sk-tag">FORTRAN 90</span>
+            <span class="sk-tag">Python</span>
+            <span class="sk-tag">PyTorch</span>
+            <span class="sk-tag">FEniCS</span>
+            <span class="sk-tag">MATLAB</span>
+          </div>
+        </div>
+        <div class="sk-group">
+          <p class="sk-label">Key Courses</p>
+          <div class="sk-tags">
+            <span class="sk-tag">Applied CFD</span>
+            <span class="sk-tag">Compressible Flows</span>
+            <span class="sk-tag">Aerodynamics</span>
+            <span class="sk-tag">Non-Linear FEM</span>
+            <span class="sk-tag">Aerospace Propulsion</span>
+            <span class="sk-tag">Turbomachinery</span>
+            <span class="sk-tag">Unsteady Aerodynamics</span>
+            <span class="sk-tag">Heat Transfer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ACHIEVEMENTS ═══════════ -->
+<section id="achievements">
+  <div class="wrap">
+    <p class="s-label">Recognition</p>
+    <h2 class="s-title">Achievements & Awards</h2>
+    <div class="ach-item">
+      <div class="ach-icon">🥈</div>
+      <div><p class="ach-title">Institute Silver Medal</p><p class="ach-desc">Awarded for best academic performance in Mechanical Engineering at IIT Indore.</p></div>
+      <p class="ach-yr">2025</p>
+    </div>
+    <div class="ach-item">
+      <div class="ach-icon">🌍</div>
+      <div><p class="ach-title">WISE Fellowship — DAAD</p><p class="ach-desc">Competitive fellowship to pursue research at the Institute of Mechanics, TU Berlin, Germany.</p></div>
+      <p class="ach-yr">2024</p>
+    </div>
+    <div class="ach-item">
+      <div class="ach-icon">🔬</div>
+      <div><p class="ach-title">Summer Research Fellowship — IASc</p><p class="ach-desc">Selected to pursue research at the Indian Institute of Science (IISc), Bangalore.</p></div>
+      <p class="ach-yr">2024</p>
+    </div>
+    <div class="ach-item">
+      <div class="ach-icon">✈️</div>
+      <div><p class="ach-title">Grand Finalist — Airbus Flight Challenge</p><p class="ach-desc">National aerospace design competition at Shaastra, IIT Madras.</p></div>
+      <p class="ach-yr">2024</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CERTIFICATIONS ═══════════ -->
+<section id="certifications">
+  <div class="wrap">
+    <p class="s-label">Credentials</p>
+    <h2 class="s-title">Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <p class="cert-name">CAD Design Associate</p>
+        <p class="cert-perfect">★ Perfect Score</p>
+        <p class="cert-issuer">SolidWorks</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-name">xDesign Associate</p>
+        <p class="cert-issuer">SolidWorks</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-name">xShape Associate</p>
+        <p class="cert-issuer">SolidWorks</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-name">3D Innovator</p>
+        <p class="cert-issuer">3DEXPERIENCE · Dassault Systèmes</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-name">Collaborative Business & Industry Innovator</p>
+        <p class="cert-issuer">3DEXPERIENCE · Dassault Systèmes</p>
+      </div>
+      <div class="cert-card">
+        <p class="cert-name">Mechanical Designer</p>
+        <p class="cert-issuer">3DEXPERIENCE · Dassault Systèmes</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LEADERSHIP ═══════════ -->
+<section id="leadership">
+  <div class="wrap">
+    <p class="s-label">Teaching & Mentorship</p>
+    <h2 class="s-title">Leadership & Extracurricular</h2>
+    <div class="g2">
+      <div class="card" style="border-left:3px solid var(--blue)">
+        <p class="card-sub">IIT Madras</p>
+        <h3 class="card-head">Teaching Assistant — Thermodynamics</h3>
+        <p class="card-meta">Jan 2026 – Present</p>
+        <p class="card-body">Conducted weekly tutorials and delivered occasional lectures for 35 undergraduate students. Guided complex problem-solving to reinforce thermodynamic principles and analytical reasoning.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--blue)">
+        <p class="card-sub">IIT Indore</p>
+        <h3 class="card-head">Teaching Assistant — Makerspace</h3>
+        <p class="card-meta">Aug 2023 – May 2024</p>
+        <p class="card-body">Trained student cohorts on 3D printers, laser cutters, and CNC machines. Co-developed the capstone project, prototyping multiple concepts to validate feasibility and maximize learning value.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER / CONTACT ═══════════ -->
+<footer id="contact">
+  <div class="wrap footer-inner" style="max-width:1200px;margin:0 auto">
+    <!-- ┌─ ADD PHOTO ─────────────────────────────────────────────────────────┐
+         │ Optional: a professional headshot above the footer name             │
+         │ <img src="headshot.jpg" style="width:80px;height:80px;             │
+         │   object-fit:cover;border-radius:50%;margin-bottom:20px;" alt="">  │
+         └──────────────────────────────────────────────────────────────────── -->
+    <h2 class="footer-name">Divyam Pandey</h2>
+    <p class="footer-tag">M.Tech Aerospace Engineering · IIT Madras · Open to research collaborations &amp; opportunities</p>
+    <div class="footer-links">
+      <a href="mailto:divyampandey@protonmail.com">✉ divyampandey@protonmail.com</a>
+      <a href="tel:+917225858011">📞 +91-7225858011</a>
+      <a href="https://linkedin.com/in/-divyampandey" target="_blank">LinkedIn ↗</a>
+      <a href="https://github.com/divyampande" target="_blank">GitHub ↗</a>
+    </div>
+    <hr class="footer-hr"/>
+    <p class="footer-copy">© 2025 Divyam Pandey · IBM Carbon Design · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+
+</body>
+</html>
