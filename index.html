@@ -59,7 +59,20 @@ section{padding:64px 0}
 
 /* GRIDS */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:1px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+
+/* SKILLS */
+#skills{background:var(--bg)}
+.skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.skill-cat{background:var(--l1);padding:24px}
+.skill-cat-label{font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.32px;text-transform:uppercase;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--blue)}
+.skill-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--l2)}
+.skill-item:last-child{border-bottom:none}
+.skill-name{font-size:14px;color:var(--t1);letter-spacing:.16px}
+.skill-dots{display:flex;gap:3px}
+.dot{width:8px;height:8px;border-radius:0;background:var(--l2)}
+.dot.on{background:var(--blue)}
+.dot.half{background:var(--border)}
 
 /* EDUCATION */
 #education{background:var(--l1)}
@@ -118,11 +131,16 @@ section{padding:64px 0}
 
 /* CERTS */
 #certifications{background:var(--bg)}
-.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px}
-.cert-card{background:var(--l1);padding:24px}
-.cert-name{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:4px}
+.cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px}
+.cert-card{background:var(--l1);padding:20px 24px;display:flex;align-items:center;gap:20px;transition:background .1s}
+.cert-card:hover{background:#e8e8e8}
+.cert-badge-slot{width:72px;height:72px;min-width:72px;background:var(--l2);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.cert-badge-slot img{width:100%;height:100%;object-fit:contain}
+.cert-badge-ph{font-family:var(--mono);font-size:8px;color:var(--tp);letter-spacing:.16px;text-align:center;line-height:1.8;padding:4px}
+.cert-info{flex:1}
+.cert-name{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:4px;line-height:1.4}
 .cert-issuer{font-family:var(--mono);font-size:11px;color:var(--tp);letter-spacing:.32px}
-.cert-perfect{font-family:var(--mono);font-size:11px;color:#24a148;letter-spacing:.32px;margin-bottom:4px}
+.cert-perfect{display:inline-block;font-family:var(--mono);font-size:10px;color:#24a148;letter-spacing:.32px;margin-bottom:4px;background:#defbe6;padding:2px 8px}
 
 /* LEADERSHIP */
 #leadership{background:var(--l1)}
@@ -147,6 +165,43 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
   section{padding:48px 0}
   #hero{padding:96px 0 48px}
 }
+
+/* ── THEME TOGGLE BUTTON ── */
+.theme-toggle{background:transparent;border:1px solid #525252;color:var(--nav-t);font-family:var(--sans);font-size:12px;letter-spacing:.16px;padding:0 14px;height:32px;cursor:pointer;border-radius:0;white-space:nowrap;flex-shrink:0}
+.theme-toggle:hover{border-color:#c6c6c6;color:#fff}
+
+/* ── LIGHT THEME (explicit) ── */
+[data-theme="light"]{
+  --bg:#ffffff;--l1:#f4f4f4;--l2:#e0e0e0;
+  --t1:#161616;--t2:#525252;--tp:#6f6f6f;--border:#c6c6c6;
+  --blue:#0f62fe;--blue-h:#0353e9;--blue-a:#002d9c;--blue-l:#0043ce;--blue-10:#edf5ff;
+  --nav:#161616;--nav-t:#c6c6c6;
+}
+
+/* ── DARK THEME ── */
+[data-theme="dark"]{
+  --bg:#161616;--l1:#262626;--l2:#393939;
+  --t1:#f4f4f4;--t2:#c6c6c6;--tp:#8d8d8d;--border:#393939;
+  --blue:#78a9ff;--blue-h:#a6c8ff;--blue-a:#edf5ff;--blue-l:#a6c8ff;--blue-10:#001d6c;
+  --nav:#262626;--nav-t:#c6c6c6;
+}
+/* Hardcoded color overrides for dark */
+[data-theme="dark"] .card:hover{background:#333}
+[data-theme="dark"] .cert-card:hover{background:#333}
+[data-theme="dark"] .proj-card{background:#393939}
+[data-theme="dark"] .proj-card:hover{background:#474747}
+[data-theme="dark"] .proj-media{background:#525252;border-color:#393939}
+[data-theme="dark"] .cert-badge-slot{background:#393939;border-color:#525252}
+[data-theme="dark"] .cert-perfect{background:#022d0d;color:#42be65}
+[data-theme="dark"] .ach-icon{color:#161616}
+[data-theme="dark"] .pub{background:#001d6c;border-color:var(--blue)}
+[data-theme="dark"] .skill-cat{background:var(--l1)}
+[data-theme="dark"] .dot{background:var(--l2)}
+[data-theme="dark"] .dot.on{background:var(--blue)}
+[data-theme="dark"] .dot.half{background:var(--border)}
+
+/* Smooth transitions */
+*{transition:background-color .2s,color .2s,border-color .2s}
 </style>
 </head>
 <body>
@@ -162,6 +217,7 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
     <li><a href="#achievements">Awards</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour mode">◐ Dark</button>
 </nav>
 
 <!-- ═══════════ HERO ═══════════ -->
@@ -385,56 +441,44 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
   <div class="wrap">
     <p class="s-label">Technical Expertise</p>
     <h2 class="s-title">Skills</h2>
-    <div class="g2" style="gap:40px">
-      <div>
-        <div class="sk-group">
-          <p class="sk-label">Simulation & Design</p>
-          <div class="sk-tags">
-            <span class="sk-tag">ANSYS Fluent (CFD)</span>
-            <span class="sk-tag">ANSYS Mechanical (FEA)</span>
-            <span class="sk-tag">Abaqus</span>
-            <span class="sk-tag">SolidWorks</span>
-            <span class="sk-tag">CATIA</span>
-            <span class="sk-tag">AutoCAD</span>
-          </div>
-        </div>
-        <div class="sk-group">
-          <p class="sk-label">Tools & Platforms</p>
-          <div class="sk-tags">
-            <span class="sk-tag">Git</span>
-            <span class="sk-tag">Linux</span>
-            <span class="sk-tag">Arduino</span>
-            <span class="sk-tag">3DEXPERIENCE</span>
-            <span class="sk-tag">LaTeX</span>
-          </div>
-        </div>
+    <div class="skill-grid">
+
+      <div class="skill-cat">
+        <p class="skill-cat-label">Simulation & CFD</p>
+        <div class="skill-item"><span class="skill-name">ANSYS Fluent</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">ANSYS Mechanical (FEA)</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Abaqus</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+        <div class="skill-item"><span class="skill-name">FEniCS</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
       </div>
-      <div>
-        <div class="sk-group">
-          <p class="sk-label">Programming</p>
-          <div class="sk-tags">
-            <span class="sk-tag">FORTRAN 90</span>
-            <span class="sk-tag">Python</span>
-            <span class="sk-tag">PyTorch</span>
-            <span class="sk-tag">FEniCS</span>
-            <span class="sk-tag">MATLAB</span>
-          </div>
-        </div>
-        <div class="sk-group">
-          <p class="sk-label">Key Courses</p>
-          <div class="sk-tags">
-            <span class="sk-tag">Applied CFD</span>
-            <span class="sk-tag">Compressible Flows</span>
-            <span class="sk-tag">Aerodynamics</span>
-            <span class="sk-tag">Non-Linear FEM</span>
-            <span class="sk-tag">Aerospace Propulsion</span>
-            <span class="sk-tag">Turbomachinery</span>
-            <span class="sk-tag">Unsteady Aerodynamics</span>
-            <span class="sk-tag">Heat Transfer</span>
-          </div>
-        </div>
+
+      <div class="skill-cat">
+        <p class="skill-cat-label">CAD & Design</p>
+        <div class="skill-item"><span class="skill-name">SolidWorks</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">CATIA</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+        <div class="skill-item"><span class="skill-name">AutoCAD</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+        <div class="skill-item"><span class="skill-name">3DEXPERIENCE</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
       </div>
+
+      <div class="skill-cat">
+        <p class="skill-cat-label">Programming</p>
+        <div class="skill-item"><span class="skill-name">Python (PyTorch, NumPy)</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">FORTRAN 90</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">MATLAB</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+        <div class="skill-item"><span class="skill-name">LaTeX / Git / Linux</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+      </div>
+
+      <div class="skill-cat">
+        <p class="skill-cat-label">Aerospace Coursework</p>
+        <div class="skill-item"><span class="skill-name">Aerodynamics & CFD</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Compressible & Unsteady Flows</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Linear & Non-Linear FEM</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Turbomachinery & Propulsion</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
+      </div>
+
     </div>
+    <p style="font-size:12px;color:var(--tp);font-family:var(--mono);letter-spacing:.32px;margin-top:12px">
+      ■■■ Proficient &nbsp;·&nbsp; ■■□ Intermediate &nbsp;·&nbsp; ■□□ Familiar
+    </p>
   </div>
 </section>
 
@@ -472,31 +516,74 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
     <p class="s-label">Credentials</p>
     <h2 class="s-title">Certifications</h2>
     <div class="cert-grid">
+
       <div class="cert-card">
-        <p class="cert-name">CAD Design Associate</p>
-        <p class="cert-perfect">★ Perfect Score</p>
-        <p class="cert-issuer">SolidWorks</p>
+        <div class="cert-badge-slot">
+          <!-- Replace with: <img src="badge-cad.png" alt="CAD Badge"> -->
+          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
+        </div>
+        <div class="cert-info">
+          <span class="cert-perfect">★ PERFECT SCORE</span>
+          <p class="cert-name">CAD Design Associate</p>
+          <p class="cert-issuer">SolidWorks · DASSAULT SYSTÈMES</p>
+        </div>
       </div>
+
       <div class="cert-card">
-        <p class="cert-name">xDesign Associate</p>
-        <p class="cert-issuer">SolidWorks</p>
+        <div class="cert-badge-slot">
+          <!-- Replace with: <img src="badge-xdesign.png" alt="xDesign Badge"> -->
+          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-name">xDesign Associate</p>
+          <p class="cert-issuer">SolidWorks · DASSAULT SYSTÈMES</p>
+        </div>
       </div>
+
       <div class="cert-card">
-        <p class="cert-name">xShape Associate</p>
-        <p class="cert-issuer">SolidWorks</p>
+        <div class="cert-badge-slot">
+          <!-- Replace with: <img src="badge-xshape.png" alt="xShape Badge"> -->
+          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-name">xShape Associate</p>
+          <p class="cert-issuer">SolidWorks · DASSAULT SYSTÈMES</p>
+        </div>
       </div>
+
       <div class="cert-card">
-        <p class="cert-name">3D Innovator</p>
-        <p class="cert-issuer">3DEXPERIENCE · Dassault Systèmes</p>
+        <div class="cert-badge-slot">
+          <!-- Replace with: <img src="badge-3dinnovator.png" alt="3D Innovator Badge"> -->
+          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-name">3D Innovator</p>
+          <p class="cert-issuer">3DEXPERIENCE · DASSAULT SYSTÈMES</p>
+        </div>
       </div>
+
       <div class="cert-card">
-        <p class="cert-name">Collaborative Business & Industry Innovator</p>
-        <p class="cert-issuer">3DEXPERIENCE · Dassault Systèmes</p>
+        <div class="cert-badge-slot">
+          <!-- Replace with: <img src="badge-collab.png" alt="Collab Badge"> -->
+          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-name">Collaborative Business & Industry Innovator</p>
+          <p class="cert-issuer">3DEXPERIENCE · DASSAULT SYSTÈMES</p>
+        </div>
       </div>
+
       <div class="cert-card">
-        <p class="cert-name">Mechanical Designer</p>
-        <p class="cert-issuer">3DEXPERIENCE · Dassault Systèmes</p>
+        <div class="cert-badge-slot">
+          <!-- Replace with: <img src="badge-mechdesigner.png" alt="Mech Designer Badge"> -->
+          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
+        </div>
+        <div class="cert-info">
+          <p class="cert-name">Mechanical Designer</p>
+          <p class="cert-issuer">3DEXPERIENCE · DASSAULT SYSTÈMES</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -543,6 +630,16 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
     <p class="footer-copy">© 2025 Divyam Pandey · IBM Carbon Design · Hosted on GitHub Pages</p>
   </div>
 </footer>
-
+<script>
+  const btn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  let dark = window.matchMedia('(prefers-color-scheme:dark)').matches;
+  function applyTheme(){
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    btn.textContent = dark ? '◑ Light' : '◐ Dark';
+  }
+  applyTheme();
+  btn.addEventListener('click', () => { dark = !dark; applyTheme(); });
+</script>
 </body>
 </html>
