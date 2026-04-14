@@ -118,9 +118,10 @@ section{padding:64px 0}
 .cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px}
 .cert-card{background:var(--l1);padding:20px 24px;display:flex;align-items:center;gap:20px;transition:background .1s}
 .cert-card:hover{background:#e8e8e8}
-.cert-badge-slot{width:72px;height:72px;min-width:72px;background:var(--l2);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
-.cert-badge-slot img{width:100%;height:100%;object-fit:contain}
-.cert-badge-ph{font-family:var(--mono);font-size:8px;color:var(--tp);letter-spacing:.16px;text-align:center;line-height:1.8;padding:4px}
+.cert-badge-slot{width:72px;height:72px;min-width:72px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--l2)}
+.cert-badge-slot img{width:100%;height:100%;object-fit:cover;display:block}
+.ach-logo{width:48px;height:48px;min-width:48px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.ach-logo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 .cert-info{flex:1}
 .cert-name{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:4px;line-height:1.4}
 .cert-issuer{font-family:var(--mono);font-size:11px;color:var(--tp);letter-spacing:.32px}
@@ -455,22 +456,22 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
     <p class="s-label">Recognition</p>
     <h2 class="s-title">Achievements & Awards</h2>
     <div class="ach-item">
-      <div class="ach-icon">🥈</div>
+      <div class="ach-logo"><img src="assets/images/logo-iitindore.png" alt="IIT Indore"></div>
       <div><p class="ach-title">Institute Silver Medal</p><p class="ach-desc">Awarded for best academic performance in Mechanical Engineering at IIT Indore — four years of showing up and doing the work.</p></div>
       <p class="ach-yr">2025</p>
     </div>
     <div class="ach-item">
-      <div class="ach-icon">🌍</div>
+      <div class="ach-logo"><img src="assets/images/logo-daad.png" alt="DAAD"></div>
       <div><p class="ach-title">WISE Fellowship — DAAD</p><p class="ach-desc">Competitive German academic exchange fellowship that took me to TU Berlin for a summer of research I'm still drawing on today.</p></div>
       <p class="ach-yr">2024</p>
     </div>
     <div class="ach-item">
-      <div class="ach-icon">🔬</div>
+      <div class="ach-logo"><img src="assets/images/logo-iasc.png" alt="IASc"></div>
       <div><p class="ach-title">Summer Research Fellowship — IASc</p><p class="ach-desc">Selected by the Indian Academy of Sciences to pursue research at IISc Bangalore — one of those opportunities that reminds you why you chose this field.</p></div>
       <p class="ach-yr">2024</p>
     </div>
     <div class="ach-item">
-      <div class="ach-icon">✈️</div>
+      <div class="ach-logo"><img src="assets/images/logo-airbus.png" alt="Airbus"></div>
       <div><p class="ach-title">Grand Finalist — Airbus Flight Challenge</p><p class="ach-desc">National aerospace design competition at Shaastra, IIT Madras. Making it to the finals against teams from across the country was a good test of everything we'd learned.</p></div>
       <p class="ach-yr">2024</p>
     </div>
@@ -484,10 +485,7 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
     <h2 class="s-title">Certifications</h2>
     <div class="cert-grid">
       <div class="cert-card">
-        <div class="cert-badge-slot">
-          <!-- <img src="assets/images/badge-cad.png" alt="CAD Badge"> -->
-          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
-        </div>
+        <div class="cert-badge-slot"><img src="assets/images/badge-cad.png" alt="CAD Design Associate Badge"></div>
         <div class="cert-info">
           <span class="cert-perfect">★ PERFECT SCORE</span>
           <p class="cert-name">CAD Design Associate</p>
@@ -495,50 +493,35 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
         </div>
       </div>
       <div class="cert-card">
-        <div class="cert-badge-slot">
-          <!-- <img src="assets/images/badge-xdesign.png" alt="xDesign Badge"> -->
-          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
-        </div>
+        <div class="cert-badge-slot"><img src="assets/images/badge-xdesign.png" alt="xDesign Associate Badge"></div>
         <div class="cert-info">
           <p class="cert-name">xDesign Associate</p>
           <p class="cert-issuer">SolidWorks · DASSAULT SYSTÈMES</p>
         </div>
       </div>
       <div class="cert-card">
-        <div class="cert-badge-slot">
-          <!-- <img src="assets/images/badge-xshape.png" alt="xShape Badge"> -->
-          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
-        </div>
+        <div class="cert-badge-slot"><img src="assets/images/badge-xshape.png" alt="xShape Associate Badge"></div>
         <div class="cert-info">
           <p class="cert-name">xShape Associate</p>
           <p class="cert-issuer">SolidWorks · DASSAULT SYSTÈMES</p>
         </div>
       </div>
       <div class="cert-card">
-        <div class="cert-badge-slot">
-          <img src="assets/images/certified-3dexperience-3d-innovator-associate.png" alt="3D Innovator Badge">
-          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
-        </div>
+        <div class="cert-badge-slot"><img src="assets/images/badge-3dinnovator.png" alt="3D Innovator Badge"></div>
         <div class="cert-info">
           <p class="cert-name">3D Innovator</p>
           <p class="cert-issuer">3DEXPERIENCE · DASSAULT SYSTÈMES</p>
         </div>
       </div>
       <div class="cert-card">
-        <div class="cert-badge-slot">
-          <img src="assets/images/certified-3dexperience-collaborative-business-industry-innovator-associate.png" alt="Collab Badge">
-          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
-        </div>
+        <div class="cert-badge-slot"><img src="assets/images/badge-collab.png" alt="Collaborative Innovator Badge"></div>
         <div class="cert-info">
           <p class="cert-name">Collaborative Business & Industry Innovator</p>
           <p class="cert-issuer">3DEXPERIENCE · DASSAULT SYSTÈMES</p>
         </div>
       </div>
       <div class="cert-card">
-        <div class="cert-badge-slot">
-          <!-- <img src="assets/images/badge-mechdesigner.png" alt="Mech Designer Badge"> -->
-          <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
-        </div>
+        <div class="cert-badge-slot"><img src="assets/images/badge-mechdesigner.png" alt="Mechanical Designer Badge"></div>
         <div class="cert-info">
           <p class="cert-name">Mechanical Designer</p>
           <p class="cert-issuer">3DEXPERIENCE · DASSAULT SYSTÈMES</p>
