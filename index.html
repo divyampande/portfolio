@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,13 +7,12 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --bg: #ffffff; --l1: #f4f4f4; --l2: #e0e0e0;
-  --t1: #161616; --t2: #525252; --tp: #6f6f6f;
-  --border: #c6c6c6; --blue: #0f62fe; --blue-h: #0353e9;
-  --blue-a: #002d9c; --blue-l: #0043ce; --blue-10: #edf5ff;
-  --nav: #161616; --nav-t: #c6c6c6;
-  --sans: 'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
-  --mono: 'IBM Plex Mono',Menlo,Courier,monospace;
+  --bg:#ffffff;--l1:#f4f4f4;--l2:#e0e0e0;
+  --t1:#161616;--t2:#525252;--tp:#6f6f6f;--border:#c6c6c6;
+  --blue:#0f62fe;--blue-h:#0353e9;--blue-a:#002d9c;--blue-l:#0043ce;--blue-10:#edf5ff;
+  --nav:#161616;--nav-t:#c6c6c6;
+  --sans:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',Menlo,Courier,monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -25,6 +24,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav);height
 .nav-links{display:flex;list-style:none}
 .nav-links a{display:block;padding:0 14px;height:48px;line-height:48px;font-size:14px;font-weight:400;color:var(--nav-t);text-decoration:none;letter-spacing:.16px;transition:color .1s}
 .nav-links a:hover{color:#fff}
+.theme-toggle{background:transparent;border:1px solid #525252;color:var(--nav-t);font-family:var(--sans);font-size:12px;letter-spacing:.16px;padding:0 14px;height:32px;cursor:pointer;border-radius:0;white-space:nowrap;flex-shrink:0}
+.theme-toggle:hover{border-color:#c6c6c6;color:#fff}
 
 /* LAYOUT */
 section{padding:64px 0}
@@ -61,22 +62,6 @@ section{padding:64px 0}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:1px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
 
-/* SKILLS */
-#skills{background:var(--bg)}
-.skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px}
-.skill-cat{background:var(--l1);padding:24px}
-.skill-cat-label{font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.32px;text-transform:uppercase;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--blue)}
-.skill-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--l2)}
-.skill-item:last-child{border-bottom:none}
-.skill-name{font-size:14px;color:var(--t1);letter-spacing:.16px}
-.skill-dots{display:flex;gap:3px}
-.dot{width:8px;height:8px;border-radius:0;background:var(--l2)}
-.dot.on{background:var(--blue)}
-.dot.half{background:var(--border)}
-
-/* EDUCATION */
-#education{background:var(--l1)}
-
 /* EXPERIENCE */
 #experience{background:var(--bg)}
 .exp-card{background:var(--l1);padding:32px;border-left:3px solid var(--blue)}
@@ -87,16 +72,9 @@ section{padding:64px 0}
 #projects{background:var(--l1)}
 .proj-card{background:var(--bg);display:flex;flex-direction:column;transition:background .1s}
 .proj-card:hover{background:#f4f4f4}
-
-/* ─── IMAGE SLOT ──────────────────────────────────────────
-   To add an image: replace the <div class="proj-ph"> block
-   with: <img src="your-image.jpg" class="proj-img" alt="…">
-   To add a video: <video src="your-video.mp4" class="proj-img" autoplay muted loop></video>
-   ─────────────────────────────────────────────────────── */
 .proj-media{width:100%;height:200px;background:#e0e0e0;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);overflow:hidden}
 .proj-img{width:100%;height:100%;object-fit:cover}
 .proj-ph{font-family:var(--mono);font-size:10px;color:var(--tp);letter-spacing:.32px;text-align:center;line-height:1.8;padding:8px}
-
 .proj-body{padding:24px;flex:1;display:flex;flex-direction:column}
 .proj-title{font-size:16px;font-weight:600;color:var(--t1);margin-bottom:4px;line-height:1.4}
 .proj-period{font-family:var(--mono);font-size:11px;color:var(--tp);letter-spacing:.32px;margin-bottom:12px}
@@ -115,10 +93,16 @@ section{padding:64px 0}
 
 /* SKILLS */
 #skills{background:var(--bg)}
-.sk-group{margin-bottom:28px}
-.sk-label{font-size:14px;font-weight:600;color:var(--t1);letter-spacing:.16px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.sk-tags{display:flex;flex-wrap:wrap;gap:8px}
-.sk-tag{background:var(--l1);color:var(--t1);font-size:13px;padding:6px 14px;border:1px solid var(--border);border-radius:0;letter-spacing:.16px}
+.skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.skill-cat{background:var(--l1);padding:24px}
+.skill-cat-label{font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.32px;text-transform:uppercase;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--blue)}
+.skill-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--l2)}
+.skill-item:last-child{border-bottom:none}
+.skill-name{font-size:14px;color:var(--t1);letter-spacing:.16px}
+.skill-dots{display:flex;gap:3px}
+.dot{width:8px;height:8px;border-radius:0;background:var(--l2)}
+.dot.on{background:var(--blue)}
+.dot.half{background:var(--border)}
 
 /* ACHIEVEMENTS */
 #achievements{background:var(--l1)}
@@ -155,8 +139,50 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
 .footer-hr{border:none;border-top:1px solid #393939;margin:24px 0}
 .footer-copy{font-size:12px;color:#6f6f6f;letter-spacing:.32px}
 
+/* LIGHT THEME */
+[data-theme="light"]{
+  --bg:#ffffff;--l1:#f4f4f4;--l2:#e0e0e0;
+  --t1:#161616;--t2:#525252;--tp:#6f6f6f;--border:#c6c6c6;
+  --blue:#0f62fe;--blue-h:#0353e9;--blue-a:#002d9c;--blue-l:#0043ce;--blue-10:#edf5ff;
+  --nav:#161616;--nav-t:#c6c6c6;
+}
+
+/* DARK THEME — AMOLED/MIDNIGHT */
+[data-theme="dark"]{
+  --bg:#000000;--l1:#0d0d0d;--l2:#1a1a1a;
+  --t1:#ffffff;--t2:#b0b0b0;--tp:#666666;--border:#2a2a2a;
+  --blue:#4d94ff;--blue-h:#6aaaff;--blue-a:#c8dfff;--blue-l:#6aaaff;--blue-10:#00123a;
+  --nav:#000000;--nav-t:#888888;
+}
+[data-theme="dark"] nav{border-bottom:1px solid #1a1a1a}
+[data-theme="dark"] .card:hover{background:#181818}
+[data-theme="dark"] .cert-card:hover{background:#181818}
+[data-theme="dark"] .proj-card{background:#0d0d0d;border:1px solid #1a1a1a}
+[data-theme="dark"] .proj-card:hover{background:#141414}
+[data-theme="dark"] .proj-media{background:#1a1a1a;border-color:#2a2a2a}
+[data-theme="dark"] .cert-badge-slot{background:#1a1a1a;border-color:#333}
+[data-theme="dark"] .cert-perfect{background:#001a0a;color:#3ddc84}
+[data-theme="dark"] .ach-icon{color:#000;background:var(--blue)}
+[data-theme="dark"] .pub{background:#00123a;border-color:var(--blue)}
+[data-theme="dark"] .exp-card{border-color:var(--blue)}
+[data-theme="dark"] .s-title{border-color:#2a2a2a}
+[data-theme="dark"] .skill-item{border-color:#1a1a1a}
+[data-theme="dark"] .skill-cat-label{border-color:var(--blue)}
+[data-theme="dark"] .footer-hr{border-color:#1a1a1a}
+[data-theme="dark"] .ach-item{border-color:#1a1a1a}
+[data-theme="dark"] .dot{background:#2a2a2a}
+[data-theme="dark"] .dot.on{background:var(--blue)}
+[data-theme="dark"] .dot.half{background:#404040}
+[data-theme="dark"] #hero{border-color:#1a1a1a}
+[data-theme="dark"] .btn-p{background:var(--blue);color:#000}
+[data-theme="dark"] .btn-p:hover{background:var(--blue-h)}
+[data-theme="dark"] .btn-t{border-color:var(--blue);color:var(--blue)}
+[data-theme="dark"] .btn-t:hover{background:#00123a}
+
+*{transition:background-color .2s,color .2s,border-color .2s}
+
 /* RESPONSIVE */
-@media(max-width:1056px){.g3{grid-template-columns:1fr 1fr}.cert-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:1056px){.g3{grid-template-columns:1fr 1fr}.cert-grid{grid-template-columns:1fr 1fr}.skill-grid{grid-template-columns:1fr}}
 @media(max-width:672px){
   .hero-name{font-size:42px}.hero-role{font-size:24px}
   .g2,.g3,.cert-grid{grid-template-columns:1fr}
@@ -165,48 +191,11 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
   section{padding:48px 0}
   #hero{padding:96px 0 48px}
 }
-
-/* ── THEME TOGGLE BUTTON ── */
-.theme-toggle{background:transparent;border:1px solid #525252;color:var(--nav-t);font-family:var(--sans);font-size:12px;letter-spacing:.16px;padding:0 14px;height:32px;cursor:pointer;border-radius:0;white-space:nowrap;flex-shrink:0}
-.theme-toggle:hover{border-color:#c6c6c6;color:#fff}
-
-/* ── LIGHT THEME (explicit) ── */
-[data-theme="light"]{
-  --bg:#ffffff;--l1:#f4f4f4;--l2:#e0e0e0;
-  --t1:#161616;--t2:#525252;--tp:#6f6f6f;--border:#c6c6c6;
-  --blue:#0f62fe;--blue-h:#0353e9;--blue-a:#002d9c;--blue-l:#0043ce;--blue-10:#edf5ff;
-  --nav:#161616;--nav-t:#c6c6c6;
-}
-
-/* ── DARK THEME ── */
-[data-theme="dark"]{
-  --bg:#161616;--l1:#262626;--l2:#393939;
-  --t1:#f4f4f4;--t2:#c6c6c6;--tp:#8d8d8d;--border:#393939;
-  --blue:#78a9ff;--blue-h:#a6c8ff;--blue-a:#edf5ff;--blue-l:#a6c8ff;--blue-10:#001d6c;
-  --nav:#262626;--nav-t:#c6c6c6;
-}
-/* Hardcoded color overrides for dark */
-[data-theme="dark"] .card:hover{background:#333}
-[data-theme="dark"] .cert-card:hover{background:#333}
-[data-theme="dark"] .proj-card{background:#393939}
-[data-theme="dark"] .proj-card:hover{background:#474747}
-[data-theme="dark"] .proj-media{background:#525252;border-color:#393939}
-[data-theme="dark"] .cert-badge-slot{background:#393939;border-color:#525252}
-[data-theme="dark"] .cert-perfect{background:#022d0d;color:#42be65}
-[data-theme="dark"] .ach-icon{color:#161616}
-[data-theme="dark"] .pub{background:#001d6c;border-color:var(--blue)}
-[data-theme="dark"] .skill-cat{background:var(--l1)}
-[data-theme="dark"] .dot{background:var(--l2)}
-[data-theme="dark"] .dot.on{background:var(--blue)}
-[data-theme="dark"] .dot.half{background:var(--border)}
-
-/* Smooth transitions */
-*{transition:background-color .2s,color .2s,border-color .2s}
 </style>
 </head>
 <body>
 
-<!-- ═══════════ NAV ═══════════ -->
+<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">Divyam Pandey</a>
   <ul class="nav-links">
@@ -220,14 +209,14 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour mode">◐ Dark</button>
 </nav>
 
-<!-- ═══════════ HERO ═══════════ -->
+<!-- HERO -->
 <section id="hero">
   <div class="wrap">
     <p class="hero-mono">M.Tech Aerospace Engineering · IIT Madras</p>
     <h1 class="hero-name">Divyam Pandey</h1>
     <h2 class="hero-role">Aerospace Engineer & Computational Researcher</h2>
     <p class="hero-desc">
-      Specializing in computational fluid dynamics, finite element methods, and physics-informed machine learning applied to aerospace and structural problems. Institute Silver Medalist · DAAD WISE Fellow, TU Berlin · Published Researcher.
+      I build solvers, simulate flows, and teach machines to think like physicists. From writing CFD codes in Fortran at IIT Madras to training neural networks at TU Berlin, I work at the intersection of classical aerospace engineering and modern computational methods — with a published paper and a silver medal along the way.
     </p>
     <div class="hero-btns">
       <a href="mailto:divyampandey@protonmail.com" class="btn-p">Get in touch →</a>
@@ -241,8 +230,8 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
   </div>
 </section>
 
-<!-- ═══════════ EDUCATION ═══════════ -->
-<section id="education">
+<!-- EDUCATION -->
+<section id="education" style="background:var(--l1)">
   <div class="wrap">
     <p class="s-label">Academic Background</p>
     <h2 class="s-title">Education</h2>
@@ -251,39 +240,35 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
         <p class="card-sub">Indian Institute of Technology Madras</p>
         <h3 class="card-head">M.Tech — Aerospace Engineering</h3>
         <p class="card-meta">Jul 2025 – Present · Chennai, Tamil Nadu · CGPA: 9.76 / 10</p>
-        <p class="card-body">Focused on aerodynamics, compressible flows, unsteady aerodynamics, and advanced computational methods. Currently serving as Teaching Assistant for Thermodynamics.</p>
+        <p class="card-body">Diving deep into aerodynamics, compressible flows, and unsteady phenomena — while also teaching thermodynamics to undergrads, which, honestly, is one of the best ways to really solidify your own understanding.</p>
       </div>
       <div class="card">
         <p class="card-sub">Indian Institute of Technology Indore</p>
         <h3 class="card-head">B.Tech — Mechanical Engineering</h3>
         <p class="card-meta">Nov 2021 – May 2025 · Indore, Madhya Pradesh · CPI: 9.34 / 10</p>
-        <p class="card-body">Graduated as <strong>Institute Silver Medalist</strong> for best academic performance. Thesis on CFD-based microfluidic drug delivery simulation resulted in a peer-reviewed publication.</p>
+        <p class="card-body">Graduated as <strong>Institute Silver Medalist</strong>. My thesis on microfluidic drug delivery — combining ANSYS simulations with experimental validation — made it all the way to a peer-reviewed journal, which was a genuinely proud moment.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ EXPERIENCE ═══════════ -->
+<!-- EXPERIENCE -->
 <section id="experience">
   <div class="wrap">
     <p class="s-label">Industry & Research</p>
     <h2 class="s-title">Experience</h2>
     <div class="exp-card">
-      <!-- ┌─ ADD PHOTO ──────────────────────────────────────────────────────────┐
-           │ A photo of TU Berlin campus or your workspace at the institute       │
-           │ Paste this inside the exp-card, above the <p class="card-sub"> tag  │
-           │ <img src="tu-berlin.jpg" style="width:100%;height:240px;            │
-           │   object-fit:cover;margin-bottom:24px;" alt="TU Berlin">            │
-           └──────────────────────────────────────────────────────────────────── -->
+      <!-- ADD PHOTO: TU Berlin campus or workspace photo
+           <img src="assets/images/tu-berlin.jpg" style="width:100%;height:240px;object-fit:cover;margin-bottom:24px;" alt="TU Berlin"> -->
       <p class="card-sub">Institute of Mechanics · Technische Universität Berlin, Germany</p>
       <h3 class="card-head">Research Intern — Non-Linear Structural Analysis via PINNs & KANs</h3>
       <p class="card-meta">May 2024 – Aug 2024 · DAAD WISE Fellowship · Python</p>
-      <p class="card-body">Developed physics-informed and Kolmogorov-Arnold Network (KAN) based approaches for mesh-free non-linear structural analysis, achieving a 90% reduction in convergence iterations over baseline architectures.</p>
+      <p class="card-body">This was my first real exposure to research at a European institution, and it pushed me in directions I hadn't anticipated. The core challenge: can neural networks replace the mesh entirely in structural simulations? Turns out, with the right architecture, they can — and dramatically faster.</p>
       <ul>
-        <li>Implemented a mesh-free PINN approach for structural analysis, eliminating mesh generation overhead of FEM.</li>
-        <li>Integrated KAN spline layers to model strong non-linearities in hyperelastic material behaviour with high fidelity.</li>
-        <li>Reduced solution-convergence iterations by 90% over baseline linear-layer architecture through KAN integration.</li>
-        <li>Validated model accuracy within 0.5% L2 error against FEM benchmarks across ANSYS, Abaqus, and FEniCS.</li>
+        <li>Replaced the mesh generation step of FEM entirely with a physics-informed neural network — the kind of thing that sounds simple until you're actually debugging it at 2am.</li>
+        <li>Integrated Kolmogorov-Arnold Network (KAN) spline layers to handle the nastier non-linearities in hyperelastic materials — something standard MLPs genuinely struggle with.</li>
+        <li>Achieved a 90% reduction in convergence iterations over the baseline architecture — a result that surprised even the supervisors.</li>
+        <li>Validated everything against FEM benchmarks on ANSYS, Abaqus, and FEniCS, landing within 0.5% L2 error across all test cases.</li>
       </ul>
       <div style="margin-top:18px">
         <a href="https://drive.google.com/file/d/1YHVyDnNpiH8dqCBEFhq9MS0ldXCDykAO/view?usp=sharing" target="_blank" class="proj-link">📄 Full Report ↗</a>
@@ -292,8 +277,8 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
   </div>
 </section>
 
-<!-- ═══════════ PROJECTS ═══════════ -->
-<section id="projects">
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--l1)">
   <div class="wrap">
     <p class="s-label">Research & Engineering</p>
     <h2 class="s-title">Projects</h2>
@@ -302,17 +287,14 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
       <!-- P1: UAV -->
       <div class="proj-card">
         <div class="proj-media">
-          <!-- ┌─ ADD IMAGE ──────────────────────────────────────────────────────┐
-               │ SolidWorks CAD render or technical drawing of the UAV           │
-               │ Replace this entire <div class="proj-ph"> with:                 │
-               │ <img src="uav-render.jpg" class="proj-img" alt="UAV Render">   │
-               └──────────────────────────────────────────────────────────────── -->
+          <!-- ADD IMAGE: SolidWorks CAD render or UAV technical drawing
+               <img src="assets/images/uav-render.jpg" class="proj-img" alt="UAV CAD Render"> -->
           <div class="proj-ph">[ SolidWorks CAD render<br>or UAV technical drawing ]</div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">Fixed-Wing UAV for Emergency Medical Supply Delivery</h3>
           <p class="proj-period">Jan 2026 – Present · Group Lead · Design Course, IIT Madras</p>
-          <p class="proj-desc">Led a 6-member team through end-to-end conceptual design of a fixed-wing UAV for last-mile medical delivery. Applied Lifting-Line Theory and Vortex Panel analysis to select optimal airfoil and wing planform for best L/D.</p>
+          <p class="proj-desc">Leading a team of six through the full conceptual design of a UAV meant to deliver medical supplies to places roads can't reach. We worked through airfoil selection, wing planform trade-offs, and CAD — the kind of end-to-end project that makes coursework feel real.</p>
           <div class="proj-tags">
             <span class="tag">Aerodynamics</span><span class="tag">SolidWorks</span>
             <span class="tag">LLT</span><span class="tag">UAV Design</span>
@@ -324,16 +306,14 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
       <!-- P2: CFD Solvers -->
       <div class="proj-card">
         <div class="proj-media">
-          <!-- ┌─ ADD IMAGE ──────────────────────────────────────────────────────┐
-               │ Temperature/velocity contour plot or convergence graph           │
-               │ <img src="cfd-contour.png" class="proj-img" alt="CFD Output">  │
-               └──────────────────────────────────────────────────────────────── -->
+          <!-- ADD IMAGE: Contour plot or convergence history
+               <img src="assets/images/cfd-contour.png" class="proj-img" alt="CFD Output"> -->
           <div class="proj-ph">[ CFD contour plot<br>or convergence history graph ]</div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">High-Performance 1D & 2D CFD Solvers</h3>
           <p class="proj-period">Feb 2026 – Mar 2026 · Course Project · IIT Madras</p>
-          <p class="proj-desc">Fortran 90/Python suite for steady-state conduction and convection-diffusion problems. TDMA line-implicit solvers with automated SOR optimization cut iterations by 90%. Ghost-node Neumann BC treatment reduced grid sizes by 75%.</p>
+          <p class="proj-desc">Built a CFD suite from the ground up in Fortran 90 and Python — because there's no better way to understand a numerical method than implementing it yourself. The TDMA solver with automated SOR tuning turned out to be the most satisfying part: 90% fewer iterations, just from getting the math right.</p>
           <div class="proj-tags">
             <span class="tag">Fortran 90</span><span class="tag">Python</span>
             <span class="tag">CFD</span><span class="tag">TDMA</span>
@@ -345,16 +325,14 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
       <!-- P3: FEM -->
       <div class="proj-card">
         <div class="proj-media">
-          <!-- ┌─ ADD IMAGE ──────────────────────────────────────────────────────┐
-               │ Stress contour from Python vs ANSYS comparison                  │
-               │ <img src="fem-plot.png" class="proj-img" alt="FEM Stress Plot"> │
-               └──────────────────────────────────────────────────────────────── -->
+          <!-- ADD IMAGE: Stress contour or Python vs ANSYS comparison
+               <img src="assets/images/fem-stress.png" class="proj-img" alt="FEM Stress Plot"> -->
           <div class="proj-ph">[ FEM stress contour<br>or Python vs ANSYS comparison ]</div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">FEM Solver for Composite Plate Analysis</h3>
           <p class="proj-period">Feb 2025 – Apr 2025 · IIT Indore</p>
-          <p class="proj-desc">2D FEM solver from scratch in Python for composite laminates with spatially varying material properties and multiple load types. Validated against ANSYS Mechanical across all test cases with &lt;3% relative error in stress predictions.</p>
+          <p class="proj-desc">Wrote a full 2D FEM solver in Python — no commercial software as a crutch, just the theory and a blank editor. Handling composite laminates and spatially varying materials made it genuinely tricky. Matching ANSYS within 3% error on every test case felt like a proper validation moment.</p>
           <div class="proj-tags">
             <span class="tag">Python</span><span class="tag">FEM</span>
             <span class="tag">ANSYS</span><span class="tag">Composites</span>
@@ -366,17 +344,15 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
       <!-- P4: Microfluidic -->
       <div class="proj-card">
         <div class="proj-media">
-          <!-- ┌─ ADD IMAGE/VIDEO ─────────────────────────────────────────────────┐
-               │ ANSYS Fluent simulation screenshot of the microfluidic channel    │
-               │ For video: <video src="fluent.mp4" class="proj-img"              │
-               │   autoplay muted loop></video>                                    │
-               └───────────────────────────────────────────────────────────────── -->
+          <!-- ADD IMAGE/VIDEO: ANSYS Fluent simulation screenshot
+               <img src="assets/images/microfluidic-fluent.jpg" class="proj-img" alt="Fluent Simulation">
+               OR video: <video src="assets/images/fluent.mp4" class="proj-img" autoplay muted loop></video> -->
           <div class="proj-ph">[ ANSYS Fluent simulation<br>of microfluidic channel ]</div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">CFD Analysis of a Microfluidic Drug Delivery System</h3>
           <p class="proj-period">Feb 2024 – Nov 2024 · Bachelor's Thesis</p>
-          <p class="proj-desc">Simulated transdermal drug delivery in ANSYS Fluent to validate artificial membranes as substitutes for animal testing. Identified membrane thickness as the dominant parameter for shear-force-mediated diffusion. <strong>Peer-reviewed publication.</strong></p>
+          <p class="proj-desc">The goal was to see if a computational model could replace animal testing in drug delivery validation — which felt like a worthwhile problem to work on. We found that membrane thickness drives diffusion rates more than anything else. The work made it into a peer-reviewed journal, which still feels surreal.</p>
           <div class="proj-tags">
             <span class="tag">ANSYS Fluent</span><span class="tag">SolidWorks</span>
             <span class="tag">Published</span>
@@ -388,16 +364,14 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
       <!-- P5: Heat Transfer -->
       <div class="proj-card">
         <div class="proj-media">
-          <!-- ┌─ ADD IMAGE ──────────────────────────────────────────────────────┐
-               │ Lid-driven cavity flow field or Nusselt number plot              │
-               │ <img src="cavity-flow.png" class="proj-img" alt="Flow Field">   │
-               └──────────────────────────────────────────────────────────────── -->
+          <!-- ADD IMAGE: Lid-driven cavity flow or Nusselt number plot
+               <img src="assets/images/cavity-flow.png" class="proj-img" alt="Flow Field"> -->
           <div class="proj-ph">[ Lid-driven cavity flow field<br>or Nusselt number vs position ]</div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">CFD & Heat Transfer Research</h3>
           <p class="proj-period">Jan 2024 – Apr 2024 · IIT Indore</p>
-          <p class="proj-desc">Validated 2D/3D lid-driven cavity flow simulations and studied forced convection in porous square and circular cylinders. Mapped drag coefficients and Nusselt numbers across positions to assess near-wall confinement effects.</p>
+          <p class="proj-desc">A research collaboration that got me hooked on validation work — running lid-driven cavity simulations and checking them against published benchmarks is less glamorous than it sounds, but it builds the kind of rigour you can't fake. The porous cylinder heat transfer study was a nice twist on a classical problem.</p>
           <div class="proj-tags">
             <span class="tag">ANSYS Fluent</span><span class="tag">Python</span>
             <span class="tag">Convection</span><span class="tag">Research</span>
@@ -408,16 +382,14 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
       <!-- P6: VAWT -->
       <div class="proj-card">
         <div class="proj-media">
-          <!-- ┌─ ADD IMAGE ──────────────────────────────────────────────────────┐
-               │ VAWT prototype photo or SolidWorks render                        │
-               │ <img src="vawt.jpg" class="proj-img" alt="VAWT Prototype">      │
-               └──────────────────────────────────────────────────────────────── -->
+          <!-- ADD IMAGE: VAWT prototype photo or SolidWorks render
+               <img src="assets/images/vawt.jpg" class="proj-img" alt="VAWT Prototype"> -->
           <div class="proj-ph">[ VAWT prototype photo<br>or SolidWorks/ANSYS render ]</div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">Adaptive Vertical Axis Wind Turbine (VAWT)</h3>
           <p class="proj-period">Jan 2024 – Apr 2024 · AAKRUTI'24 · Dassault Systèmes</p>
-          <p class="proj-desc">Designed a Darrieus-Savonius hybrid rotor using drag torque to resolve the self-starting limitation of lift-based VAWTs. Designed a variable-pitch control mechanism to optimize blade angle-of-attack for maximum power extraction.</p>
+          <p class="proj-desc">The classic problem with Darrieus rotors is they won't self-start. Our fix: borrow the self-starting drag torque of a Savonius rotor and combine the two. Add a variable-pitch mechanism on top and you have something that works across a much wider range of wind conditions — we modelled several blade configurations to back it up.</p>
           <div class="proj-tags">
             <span class="tag">SolidWorks</span><span class="tag">ANSYS</span>
             <span class="tag">Manufacturing</span><span class="tag">Wind Energy</span>
@@ -425,7 +397,7 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
         </div>
       </div>
 
-    </div><!-- /g3 -->
+    </div>
 
     <!-- Publication Strip -->
     <div class="pub">
@@ -436,13 +408,12 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
   </div>
 </section>
 
-<!-- ═══════════ SKILLS ═══════════ -->
+<!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
     <p class="s-label">Technical Expertise</p>
     <h2 class="s-title">Skills</h2>
     <div class="skill-grid">
-
       <div class="skill-cat">
         <p class="skill-cat-label">Simulation & CFD</p>
         <div class="skill-item"><span class="skill-name">ANSYS Fluent</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
@@ -450,7 +421,6 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
         <div class="skill-item"><span class="skill-name">Abaqus</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
         <div class="skill-item"><span class="skill-name">FEniCS</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
       </div>
-
       <div class="skill-cat">
         <p class="skill-cat-label">CAD & Design</p>
         <div class="skill-item"><span class="skill-name">SolidWorks</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
@@ -458,7 +428,6 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
         <div class="skill-item"><span class="skill-name">AutoCAD</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
         <div class="skill-item"><span class="skill-name">3DEXPERIENCE</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
       </div>
-
       <div class="skill-cat">
         <p class="skill-cat-label">Programming</p>
         <div class="skill-item"><span class="skill-name">Python (PyTorch, NumPy)</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
@@ -466,7 +435,6 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
         <div class="skill-item"><span class="skill-name">MATLAB</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
         <div class="skill-item"><span class="skill-name">LaTeX / Git / Linux</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
       </div>
-
       <div class="skill-cat">
         <p class="skill-cat-label">Aerospace Coursework</p>
         <div class="skill-item"><span class="skill-name">Aerodynamics & CFD</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
@@ -474,7 +442,6 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
         <div class="skill-item"><span class="skill-name">Linear & Non-Linear FEM</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div>
         <div class="skill-item"><span class="skill-name">Turbomachinery & Propulsion</span><div class="skill-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot half"></div></div></div>
       </div>
-
     </div>
     <p style="font-size:12px;color:var(--tp);font-family:var(--mono);letter-spacing:.32px;margin-top:12px">
       ■■■ Proficient &nbsp;·&nbsp; ■■□ Intermediate &nbsp;·&nbsp; ■□□ Familiar
@@ -482,44 +449,43 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
   </div>
 </section>
 
-<!-- ═══════════ ACHIEVEMENTS ═══════════ -->
-<section id="achievements">
+<!-- ACHIEVEMENTS -->
+<section id="achievements" style="background:var(--l1)">
   <div class="wrap">
     <p class="s-label">Recognition</p>
     <h2 class="s-title">Achievements & Awards</h2>
     <div class="ach-item">
       <div class="ach-icon">🥈</div>
-      <div><p class="ach-title">Institute Silver Medal</p><p class="ach-desc">Awarded for best academic performance in Mechanical Engineering at IIT Indore.</p></div>
+      <div><p class="ach-title">Institute Silver Medal</p><p class="ach-desc">Awarded for best academic performance in Mechanical Engineering at IIT Indore — four years of showing up and doing the work.</p></div>
       <p class="ach-yr">2025</p>
     </div>
     <div class="ach-item">
       <div class="ach-icon">🌍</div>
-      <div><p class="ach-title">WISE Fellowship — DAAD</p><p class="ach-desc">Competitive fellowship to pursue research at the Institute of Mechanics, TU Berlin, Germany.</p></div>
+      <div><p class="ach-title">WISE Fellowship — DAAD</p><p class="ach-desc">Competitive German academic exchange fellowship that took me to TU Berlin for a summer of research I'm still drawing on today.</p></div>
       <p class="ach-yr">2024</p>
     </div>
     <div class="ach-item">
       <div class="ach-icon">🔬</div>
-      <div><p class="ach-title">Summer Research Fellowship — IASc</p><p class="ach-desc">Selected to pursue research at the Indian Institute of Science (IISc), Bangalore.</p></div>
+      <div><p class="ach-title">Summer Research Fellowship — IASc</p><p class="ach-desc">Selected by the Indian Academy of Sciences to pursue research at IISc Bangalore — one of those opportunities that reminds you why you chose this field.</p></div>
       <p class="ach-yr">2024</p>
     </div>
     <div class="ach-item">
       <div class="ach-icon">✈️</div>
-      <div><p class="ach-title">Grand Finalist — Airbus Flight Challenge</p><p class="ach-desc">National aerospace design competition at Shaastra, IIT Madras.</p></div>
+      <div><p class="ach-title">Grand Finalist — Airbus Flight Challenge</p><p class="ach-desc">National aerospace design competition at Shaastra, IIT Madras. Making it to the finals against teams from across the country was a good test of everything we'd learned.</p></div>
       <p class="ach-yr">2024</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ CERTIFICATIONS ═══════════ -->
+<!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="wrap">
     <p class="s-label">Credentials</p>
     <h2 class="s-title">Certifications</h2>
     <div class="cert-grid">
-
       <div class="cert-card">
         <div class="cert-badge-slot">
-          <!-- Replace with: <img src="badge-cad.png" alt="CAD Badge"> -->
+          <!-- <img src="assets/images/badge-cad.png" alt="CAD Badge"> -->
           <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
         </div>
         <div class="cert-info">
@@ -528,10 +494,9 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
           <p class="cert-issuer">SolidWorks · DASSAULT SYSTÈMES</p>
         </div>
       </div>
-
       <div class="cert-card">
         <div class="cert-badge-slot">
-          <!-- Replace with: <img src="badge-xdesign.png" alt="xDesign Badge"> -->
+          <!-- <img src="assets/images/badge-xdesign.png" alt="xDesign Badge"> -->
           <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
         </div>
         <div class="cert-info">
@@ -539,10 +504,9 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
           <p class="cert-issuer">SolidWorks · DASSAULT SYSTÈMES</p>
         </div>
       </div>
-
       <div class="cert-card">
         <div class="cert-badge-slot">
-          <!-- Replace with: <img src="badge-xshape.png" alt="xShape Badge"> -->
+          <!-- <img src="assets/images/badge-xshape.png" alt="xShape Badge"> -->
           <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
         </div>
         <div class="cert-info">
@@ -550,10 +514,9 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
           <p class="cert-issuer">SolidWorks · DASSAULT SYSTÈMES</p>
         </div>
       </div>
-
       <div class="cert-card">
         <div class="cert-badge-slot">
-          <!-- Replace with: <img src="badge-3dinnovator.png" alt="3D Innovator Badge"> -->
+          <!-- <img src="assets/images/badge-3dinnovator.png" alt="3D Innovator Badge"> -->
           <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
         </div>
         <div class="cert-info">
@@ -561,10 +524,9 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
           <p class="cert-issuer">3DEXPERIENCE · DASSAULT SYSTÈMES</p>
         </div>
       </div>
-
       <div class="cert-card">
         <div class="cert-badge-slot">
-          <!-- Replace with: <img src="badge-collab.png" alt="Collab Badge"> -->
+          <!-- <img src="assets/images/badge-collab.png" alt="Collab Badge"> -->
           <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
         </div>
         <div class="cert-info">
@@ -572,10 +534,9 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
           <p class="cert-issuer">3DEXPERIENCE · DASSAULT SYSTÈMES</p>
         </div>
       </div>
-
       <div class="cert-card">
         <div class="cert-badge-slot">
-          <!-- Replace with: <img src="badge-mechdesigner.png" alt="Mech Designer Badge"> -->
+          <!-- <img src="assets/images/badge-mechdesigner.png" alt="Mech Designer Badge"> -->
           <div class="cert-badge-ph">Add<br>Badge<br>Image</div>
         </div>
         <div class="cert-info">
@@ -583,13 +544,12 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
           <p class="cert-issuer">3DEXPERIENCE · DASSAULT SYSTÈMES</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════ LEADERSHIP ═══════════ -->
-<section id="leadership">
+<!-- LEADERSHIP -->
+<section id="leadership" style="background:var(--l1)">
   <div class="wrap">
     <p class="s-label">Teaching & Mentorship</p>
     <h2 class="s-title">Leadership & Extracurricular</h2>
@@ -598,26 +558,23 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
         <p class="card-sub">IIT Madras</p>
         <h3 class="card-head">Teaching Assistant — Thermodynamics</h3>
         <p class="card-meta">Jan 2026 – Present</p>
-        <p class="card-body">Conducted weekly tutorials and delivered occasional lectures for 35 undergraduate students. Guided complex problem-solving to reinforce thermodynamic principles and analytical reasoning.</p>
+        <p class="card-body">Running weekly tutorials for 35 undergrads and stepping in to lecture when needed. There's something clarifying about having to explain entropy to someone who's seeing it for the first time — it keeps your own fundamentals sharp.</p>
       </div>
       <div class="card" style="border-left:3px solid var(--blue)">
         <p class="card-sub">IIT Indore</p>
         <h3 class="card-head">Teaching Assistant — Makerspace</h3>
         <p class="card-meta">Aug 2023 – May 2024</p>
-        <p class="card-body">Trained student cohorts on 3D printers, laser cutters, and CNC machines. Co-developed the capstone project, prototyping multiple concepts to validate feasibility and maximize learning value.</p>
+        <p class="card-body">Trained batches of students on 3D printers, laser cutters, and CNC machines. Co-designed the capstone project from scratch — built several prototypes ourselves just to figure out what would actually be feasible for students to attempt.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FOOTER / CONTACT ═══════════ -->
+<!-- FOOTER -->
 <footer id="contact">
-  <div class="wrap footer-inner" style="max-width:1200px;margin:0 auto">
-    <!-- ┌─ ADD PHOTO ─────────────────────────────────────────────────────────┐
-         │ Optional: a professional headshot above the footer name             │
-         │ <img src="headshot.jpg" style="width:80px;height:80px;             │
-         │   object-fit:cover;border-radius:50%;margin-bottom:20px;" alt="">  │
-         └──────────────────────────────────────────────────────────────────── -->
+  <div class="wrap">
+    <!-- ADD HEADSHOT (optional):
+         <img src="assets/images/headshot.jpg" style="width:80px;height:80px;object-fit:cover;border-radius:50%;margin-bottom:20px;" alt="Divyam Pandey"> -->
     <h2 class="footer-name">Divyam Pandey</h2>
     <p class="footer-tag">M.Tech Aerospace Engineering · IIT Madras · Open to research collaborations &amp; opportunities</p>
     <div class="footer-links">
@@ -627,9 +584,10 @@ footer{background:var(--nav);color:var(--nav-t);padding:48px 0 32px}
       <a href="https://github.com/divyampande" target="_blank">GitHub ↗</a>
     </div>
     <hr class="footer-hr"/>
-    <p class="footer-copy">© 2025 Divyam Pandey · IBM Carbon Design · Hosted on GitHub Pages</p>
+    <p class="footer-copy">© 2025 Divyam Pandey &nbsp;·&nbsp; Built with Claude by Anthropic</p>
   </div>
 </footer>
+
 <script>
   const btn = document.getElementById('themeToggle');
   const root = document.documentElement;
